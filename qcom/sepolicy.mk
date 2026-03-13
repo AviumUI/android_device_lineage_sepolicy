@@ -22,16 +22,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
     device/lineage/sepolicy/qcom/vendor
 endif
 
-ifeq (,$(filter msm8937 msm8953 msm8996 msm8998 sdm660 sdm710, $(TARGET_BOARD_PLATFORM)))
-INT_USES_SEPOLICY_M4DEFS := true
-endif # TARGET_BOARD_PLATFORM != msm8937 msm8953 msm8996 msm8998 sdm660 sdm710
-ifeq ($(TARGET_BOARD_PLATFORM), sdm845)
-ifeq ($(TARGET_KERNEL_VERSION), 4.19)
-INT_USES_SEPOLICY_M4DEFS := true
-endif # TARHET_KERNEL_VERSION == 4.19
-endif # TARGET_BOARD_PLATFORM == sdm845
-
-ifeq ($(INT_USES_SEPOLICY_M4DEFS), true)
+ifeq (,$(filter msm8937 msm8953 msm8996 msm8998 sdm660 sdm710 sdm845, $(TARGET_BOARD_PLATFORM)))
 BOARD_SEPOLICY_M4DEFS += \
     custom_ab_block_device=vendor_custom_ab_block_device \
     display_vendor_data_file=vendor_display_vendor_data_file \
